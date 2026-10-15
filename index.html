@@ -39,14 +39,20 @@
       </section>
 
       <section class="actions" aria-label="문항 배점">
-        <button type="button" data-points="2" aria-keyshortcuts="2"><span>2</span>점 문항<small><b data-count="2">0</b>회</small></button>
-        <button type="button" data-points="3" aria-keyshortcuts="3"><span>3</span>점 문항<small><b data-count="3">0</b>회</small></button>
-        <button type="button" data-points="4" aria-keyshortcuts="4"><span>4</span>점 문항<small><b data-count="4">0</b>회</small></button>
+        <button type="button" data-points="2" aria-keyshortcuts="2"><span>2</span>점 문항<small><b data-count="2">0</b>개</small></button>
+        <button type="button" data-points="3" aria-keyshortcuts="3"><span>3</span>점 문항<small><b data-count="3">0</b>개</small></button>
+        <button type="button" data-points="4" aria-keyshortcuts="4"><span>4</span>점 문항<small><b data-count="4">0</b>개</small></button>
       </section>
 
       <div class="secondary-actions">
-        <button id="undo" type="button" disabled>실행 취소</button>
-        <button id="reset" type="button">처음부터</button>
+        <button id="undo" type="button" disabled>
+          <svg aria-hidden="true" viewBox="0 0 24 24"><path d="M9 14 4 9l5-5"/><path d="M4 9h10.5a5.5 5.5 0 0 1 0 11H11"/></svg>
+          실행 취소
+        </button>
+        <button id="reset" type="button">
+          <svg aria-hidden="true" viewBox="0 0 24 24"><path d="M3 12a9 9 0 1 0 3-6.7L3 8"/><path d="M3 3v5h5"/></svg>
+          처음부터
+        </button>
       </div>
       <p class="hint" id="hint">득점 모드 · 0점에서 시작 · 숫자 키 2·3·4 사용 가능</p>
     </main>

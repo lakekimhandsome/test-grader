@@ -91,7 +91,8 @@ legend { padding: 0; }
 .actions button small b { color: #fff; }
 
 .secondary-actions { display: flex; justify-content: center; gap: 4px; margin-top: 16px; }
-.secondary-actions button { padding: 9px 12px; border: 0; color: #6a6b65; background: transparent; cursor: pointer; font-weight: 700; }
+.secondary-actions button { display: inline-flex; align-items: center; gap: 5px; padding: 9px 12px; border: 0; color: #6a6b65; background: transparent; cursor: pointer; font-weight: 700; }
+.secondary-actions svg { width: 16px; height: 16px; fill: none; stroke: currentColor; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
 .secondary-actions button:hover:not(:disabled) { color: #202124; }
 .secondary-actions button:disabled { color: #b8b8b3; cursor: default; }
 .hint { margin: 4px 0 0; color: #96968f; text-align: center; font-size: 12px; }
