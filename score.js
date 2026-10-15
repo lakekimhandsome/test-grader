@@ -10,3 +10,7 @@ export function initialScore(maxScore, mode) {
 export function shortcutPoints(key) {
   return ["2", "3", "4"].includes(key) ? Number(key) : null;
 }
+
+export function scoreFromEntries(entries, maxScore, mode) {
+  return entries.reduce((score, points) => nextScore(score, points, maxScore, mode), initialScore(maxScore, mode));
+}

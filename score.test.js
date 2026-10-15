@@ -1,6 +1,6 @@
 import test from "node:test";
 import assert from "node:assert/strict";
-import { initialScore, nextScore, shortcutPoints } from "./score.js";
+import { initialScore, nextScore, scoreFromEntries, shortcutPoints } from "./score.js";
 
 test("득점은 0에서 시작해 만점을 넘지 않는다", () => {
   assert.equal(initialScore(10, "earned"), 0);
@@ -16,4 +16,10 @@ test("2, 3, 4 키만 배점 단축키로 사용한다", () => {
   assert.equal(shortcutPoints("2"), 2);
   assert.equal(shortcutPoints("4"), 4);
   assert.equal(shortcutPoints("5"), null);
+});
+
+test("입력 기록으로 점수를 다시 계산해 실행 취소할 수 있다", () => {
+  assert.equal(scoreFromEntries([2, 3, 4], 100, "earned"), 9);
+  assert.equal(scoreFromEntries([2, 3], 100, "earned"), 5);
+  assert.equal(scoreFromEntries([2, 3], 100, "deducted"), 95);
 });

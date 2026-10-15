@@ -4,15 +4,15 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="theme-color" content="#f5f5f3" />
-    <meta name="description" content="2점, 3점, 4점 문항을 빠르게 채점하는 간단한 도구" />
-    <title>시험지 채점기</title>
+    <meta name="description" content="2점, 3점, 4점 문항의 시험 점수를 빠르게 계산하는 도구" />
+    <title>시험 점수 계산기</title>
     <link rel="stylesheet" href="styles.css" />
     <script type="module" src="app.js"></script>
   </head>
   <body>
     <main class="app">
       <header>
-        <h1>시험지 채점기</h1>
+        <h1>시험 점수 계산기</h1>
         <p class="intro">문항 배점을 누르면 점수가 바로 계산됩니다.</p>
       </header>
 
@@ -39,12 +39,15 @@
       </section>
 
       <section class="actions" aria-label="문항 배점">
-        <button type="button" data-points="2" aria-keyshortcuts="2"><span>2</span>점 문항</button>
-        <button type="button" data-points="3" aria-keyshortcuts="3"><span>3</span>점 문항</button>
-        <button type="button" data-points="4" aria-keyshortcuts="4"><span>4</span>점 문항</button>
+        <button type="button" data-points="2" aria-keyshortcuts="2"><span>2</span>점 문항<small><b data-count="2">0</b>회</small></button>
+        <button type="button" data-points="3" aria-keyshortcuts="3"><span>3</span>점 문항<small><b data-count="3">0</b>회</small></button>
+        <button type="button" data-points="4" aria-keyshortcuts="4"><span>4</span>점 문항<small><b data-count="4">0</b>회</small></button>
       </section>
 
-      <button class="reset" id="reset" type="button">처음부터</button>
+      <div class="secondary-actions">
+        <button id="undo" type="button" disabled>실행 취소</button>
+        <button id="reset" type="button">처음부터</button>
+      </div>
       <p class="hint" id="hint">득점 모드 · 0점에서 시작 · 숫자 키 2·3·4 사용 가능</p>
     </main>
   </body>

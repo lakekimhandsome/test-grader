@@ -1,4 +1,4 @@
-import { initialScore, nextScore, shortcutPoints } from "./score.js";
+import { scoreFromEntries, shortcutPoints } from "./score.js";
 
 const maxInput = document.querySelector("#max-score");
 const currentScore = document.querySelector("#current-score");
@@ -8,7 +8,7 @@ const modeLabel = document.querySelector("#mode-label");
 const hint = document.querySelector("#hint");
 
 let mode = "earned";
-let score = 0;
+let entries = [];
 
 function maxScore() {
   return Math.min(999, Math.max(1, Number.parseInt(maxInput.value, 10) || 100));
@@ -16,22 +16,27 @@ function maxScore() {
 
 function render() {
   const max = maxScore();
+  const score = scoreFromEntries(entries, max, mode);
   currentScore.textContent = score;
   scoreTotal.textContent = `/ ${max}점`;
   progressBar.style.width = `${(score / max) * 100}%`;
   modeLabel.textContent = mode === "earned" ? "쌓인 점수" : "남은 점수";
   const start = mode === "earned" ? "0점에서 시작" : `${max}점에서 시작`;
   hint.textContent = `${mode === "earned" ? "득점" : "감점"} 모드 · ${start} · 숫자 키 2·3·4 사용 가능`;
+  document.querySelectorAll("[data-count]").forEach((count) => {
+    count.textContent = entries.filter((points) => points === Number(count.dataset.count)).length;
+  });
+  document.querySelector("#undo").disabled = entries.length === 0;
 }
 
 function reset() {
-  score = initialScore(maxScore(), mode);
+  entries = [];
   render();
 }
 
 document.querySelectorAll("[data-points]").forEach((button) => {
   button.addEventListener("click", () => {
-    score = nextScore(score, Number(button.dataset.points), maxScore(), mode);
+    entries.push(Number(button.dataset.points));
     render();
   });
 });
@@ -49,6 +54,10 @@ maxInput.addEventListener("change", () => {
 });
 
 document.querySelector("#reset").addEventListener("click", reset);
+document.querySelector("#undo").addEventListener("click", () => {
+  entries.pop();
+  render();
+});
 
 document.addEventListener("keydown", (event) => {
   if (event.repeat || event.target instanceof HTMLInputElement) return;
