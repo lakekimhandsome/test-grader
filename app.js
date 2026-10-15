@@ -1,4 +1,4 @@
-import { scoreFromEntries, shortcutPoints } from "./score.js";
+import { scoreFromEntries, shortcutPoints } from "./score.js?v=20261015-1";
 
 const maxInput = document.querySelector("#max-score");
 const currentScore = document.querySelector("#current-score");
