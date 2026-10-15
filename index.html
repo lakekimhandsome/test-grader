@@ -1,0 +1,52 @@
+<!doctype html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="theme-color" content="#f3f1ec" />
+    <meta name="description" content="2점, 3점, 4점 문항을 빠르게 채점하는 간단한 도구" />
+    <title>시험지 채점기</title>
+    <link rel="stylesheet" href="styles.css" />
+    <script type="module" src="app.js"></script>
+  </head>
+  <body>
+    <main class="app">
+      <header>
+        <p class="eyebrow">QUICK GRADER</p>
+        <h1>시험지 채점기</h1>
+        <p class="intro">문항의 배점을 누르면 현재 점수가 바로 계산됩니다.</p>
+      </header>
+
+      <section class="setup" aria-label="채점 설정">
+        <label for="max-score">만점</label>
+        <div class="score-input">
+          <input id="max-score" type="number" min="1" max="999" inputmode="numeric" value="100" />
+          <span>점</span>
+        </div>
+
+        <fieldset>
+          <legend>채점 방식</legend>
+          <div class="mode-switch">
+            <label><input type="radio" name="mode" value="earned" checked /><span>득점</span></label>
+            <label><input type="radio" name="mode" value="deducted" /><span>감점</span></label>
+          </div>
+        </fieldset>
+      </section>
+
+      <section class="result" aria-live="polite" aria-atomic="true">
+        <p id="mode-label">쌓인 점수</p>
+        <div class="score"><strong id="current-score">0</strong><span id="score-total">/ 100점</span></div>
+        <div class="progress" aria-hidden="true"><span id="progress-bar"></span></div>
+      </section>
+
+      <section class="actions" aria-label="문항 배점">
+        <button type="button" data-points="2"><span>2</span>점 문항</button>
+        <button type="button" data-points="3"><span>3</span>점 문항</button>
+        <button type="button" data-points="4"><span>4</span>점 문항</button>
+      </section>
+
+      <button class="reset" id="reset" type="button">처음부터</button>
+      <p class="hint" id="hint">득점 모드 · 0점에서 시작</p>
+    </main>
+  </body>
+</html>
