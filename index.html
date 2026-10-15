@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta name="theme-color" content="#f3f1ec" />
+    <meta name="theme-color" content="#f5f5f3" />
     <meta name="description" content="2점, 3점, 4점 문항을 빠르게 채점하는 간단한 도구" />
     <title>시험지 채점기</title>
     <link rel="stylesheet" href="styles.css" />
@@ -12,9 +12,8 @@
   <body>
     <main class="app">
       <header>
-        <p class="eyebrow">QUICK GRADER</p>
         <h1>시험지 채점기</h1>
-        <p class="intro">문항의 배점을 누르면 현재 점수가 바로 계산됩니다.</p>
+        <p class="intro">문항 배점을 누르면 점수가 바로 계산됩니다.</p>
       </header>
 
       <section class="setup" aria-label="채점 설정">
@@ -40,13 +39,13 @@
       </section>
 
       <section class="actions" aria-label="문항 배점">
-        <button type="button" data-points="2"><span>2</span>점 문항</button>
-        <button type="button" data-points="3"><span>3</span>점 문항</button>
-        <button type="button" data-points="4"><span>4</span>점 문항</button>
+        <button type="button" data-points="2" aria-keyshortcuts="2"><span>2</span>점 문항</button>
+        <button type="button" data-points="3" aria-keyshortcuts="3"><span>3</span>점 문항</button>
+        <button type="button" data-points="4" aria-keyshortcuts="4"><span>4</span>점 문항</button>
       </section>
 
       <button class="reset" id="reset" type="button">처음부터</button>
-      <p class="hint" id="hint">득점 모드 · 0점에서 시작</p>
+      <p class="hint" id="hint">득점 모드 · 0점에서 시작 · 숫자 키 2·3·4 사용 가능</p>
     </main>
   </body>
 </html>

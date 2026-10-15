@@ -1,4 +1,4 @@
-import { initialScore, nextScore } from "./score.js";
+import { initialScore, nextScore, shortcutPoints } from "./score.js";
 
 const maxInput = document.querySelector("#max-score");
 const currentScore = document.querySelector("#current-score");
@@ -20,7 +20,8 @@ function render() {
   scoreTotal.textContent = `/ ${max}점`;
   progressBar.style.width = `${(score / max) * 100}%`;
   modeLabel.textContent = mode === "earned" ? "쌓인 점수" : "남은 점수";
-  hint.textContent = mode === "earned" ? "득점 모드 · 0점에서 시작" : `감점 모드 · ${max}점에서 시작`;
+  const start = mode === "earned" ? "0점에서 시작" : `${max}점에서 시작`;
+  hint.textContent = `${mode === "earned" ? "득점" : "감점"} 모드 · ${start} · 숫자 키 2·3·4 사용 가능`;
 }
 
 function reset() {
@@ -48,4 +49,11 @@ maxInput.addEventListener("change", () => {
 });
 
 document.querySelector("#reset").addEventListener("click", reset);
+
+document.addEventListener("keydown", (event) => {
+  if (event.repeat || event.target instanceof HTMLInputElement) return;
+  const points = shortcutPoints(event.key);
+  if (points) document.querySelector(`[data-points="${points}"]`).click();
+});
+
 render();

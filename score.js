@@ -6,3 +6,7 @@ export function nextScore(score, points, maxScore, mode) {
 export function initialScore(maxScore, mode) {
   return mode === "earned" ? 0 : maxScore;
 }
+
+export function shortcutPoints(key) {
+  return ["2", "3", "4"].includes(key) ? Number(key) : null;
+}
